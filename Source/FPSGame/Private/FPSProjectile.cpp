@@ -29,6 +29,7 @@ AFPSProjectile::AFPSProjectile()
 
 	// Die after 3 seconds by default
 	InitialLifeSpan = 3.0f;
+
 }
 
 
@@ -38,6 +39,18 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 	if ((OtherActor != NULL) && (OtherActor != this) && (OtherComp != NULL) && OtherComp->IsSimulatingPhysics())
 	{
 		OtherComp->AddImpulseAtLocation(GetVelocity() * 100.0f, GetActorLocation());
+		FVector comScale = OtherComp->GetComponentScale();
+		if (comScale.GetMin() < 0.55f) {
+			OtherActor->Destroy();
+		}
+		else {
+			OtherComp->SetWorldScale3D(comScale*0.8f);
+		}
+		UMaterialInstanceDynamic* MatInst = OtherComp->CreateAndSetMaterialInstanceDynamic(0);
+		if (MatInst) {
+			MatInst->SetVectorParameterValue("Color", FLinearColor::MakeRandomColor());
+		}
+
 
 		Destroy();
 	}

@@ -53,6 +53,9 @@ protected:
 	/** Fires a projectile. */
 	void Fire();
 
+	/** Spawns a bomb. */
+	void SpawnBomb();
+
 	/** Handles moving forward/backward */
 	void MoveForward(float Val);
 
