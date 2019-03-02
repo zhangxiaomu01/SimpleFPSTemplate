@@ -9,9 +9,10 @@
 class UInputComponent;
 class USkeletalMeshComponent;
 class UCameraComponent;
-class AFPSProjectile;
 class USoundBase;
 class UAnimSequence;
+class AFPSProjectile;
+class AFPSBombActor;
 
 
 UCLASS()
@@ -20,7 +21,6 @@ class AFPSCharacter : public ACharacter
 	GENERATED_BODY()
 
 protected:
-
 	/** Pawn mesh: 1st person view  */
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Mesh")
 	USkeletalMeshComponent* Mesh1PComponent;
@@ -39,6 +39,10 @@ public:
 	/** Projectile class to spawn */
 	UPROPERTY(EditDefaultsOnly, Category="Projectile")
 	TSubclassOf<AFPSProjectile> ProjectileClass;
+
+	/** Bomb class to spawn */
+	UPROPERTY(EditDefaultsOnly, Category = "Bombs")
+	TSubclassOf<AFPSBombActor> BombClass;
 
 	/** Sound to play each time we fire */
 	UPROPERTY(EditDefaultsOnly, Category="Gameplay")

@@ -51,7 +51,6 @@ void AFPSProjectile::OnHit(UPrimitiveComponent* HitComp, AActor* OtherActor, UPr
 			MatInst->SetVectorParameterValue("Color", FLinearColor::MakeRandomColor());
 		}
 
-
 		Destroy();
 	}
 }
